@@ -1,18 +1,33 @@
 #pragma once
-#include <vector>
-#include <string>
+#include "Interpreter.h"
+#include <iostream>
+#include <fstream>
 
 class Program
 {
-	std::vector<int> memory;
-public:
-	Program();
+	std::string pathToReturn = "", code;
+	Interpreter interpreter;
 
-	void interpret(std::string code);
+public:
+	void readInputFromFile(std::string path);
+	void interpret();
+
+	inline void setPathToReturn(std::string path)
+	{
+		pathToReturn = path;
+	}
+
+	inline void setCode(std::string _code)
+	{
+		code = _code;
+	}
+
+	inline bool isCodeSet()
+	{
+		return !code.empty();
+	}
 
 private:
-	bool verify(std::string code);
-	int findClosingBracket(std::string code, int iter); //returns position of closing bracket
-	int findOpeningBracket(std::string code, int iter);
+	void writeResultToFile(std::string path);
 };
 
