@@ -2,6 +2,8 @@
 #include "Interpreter.h"
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
+#include <string>
 
 class Program
 {
@@ -28,6 +30,6 @@ public:
 	}
 
 private:
-	void writeResultToFile(std::string path);
+	void writeResultToFile(std::string path, std::string result);
 };
 
